@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>2026 즐거운 제주도 수학여행 🌴 학생 안내</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@600;700&display=swap');
+
+  :root {
+    --jeju-sky: #0077b6;
+    --jeju-deep: #023e8a;
+    --jeju-teal: #00b4d8;
+    --jeju-sand: #f4e4c1;
+    --jeju-green: #2d6a4f;
+    --accent: #ff6b35;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-600: #475569;
+    --gray-800: #1e293b;
+    --shadow: 0 4px 20px rgba(0,119,182,0.12);
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #eaf4fb;
+    color: var(--gray-800);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: linear-gradient(135deg, var(--jeju-deep) 0%, var(--jeju-sky) 60%, var(--jeju-teal) 100%);
+    color: white;
+    padding: 20px 16px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 24px rgba(2,62,138,0.35);
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .school-badge {
+    background: rgba(255,255,255,0.2);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .trip-label {
+    background: var(--accent);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .header-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .header-subtitle {
+    font-size: 12px;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  /* TAB NAV */
+  .tab-nav {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px;
+    padding: 0 4px;
+    margin-top: 14px;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    border-radius: 50px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn:active { opacity: 0.7; }
+  .tab-btn.active {
+    background: white;
+    color: var(--jeju-deep);
+    border-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+
+  /* CONTENT */
+  .tab-content { display: none; padding: 16px; }
+  .tab-content.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--jeju-deep);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 14px;
+    background: var(--jeju-sky);
+    border-radius: 2px;
+  }
+
+  /* STUDENT LIST */
+  .class-section { margin-bottom: 18px; }
+  .class-header {
+    background: linear-gradient(90deg, var(--jeju-deep), var(--jeju-sky));
+    color: white;
+    padding: 8px 14px;
+    border-radius: 10px 10px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .class-count {
+    background: rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 11px;
+  }
+  .student-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--gray-200);
+    border: 1px solid var(--gray-200);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+  }
+  .student-item {
+    background: white;
+    padding: 8px 6px;
+    font-size: 12px;
+    text-align: center;
+    transition: background 0.15s;
+  }
+  .student-item:active { background: #e8f4fd; }
+  .student-num {
+    font-size: 9px;
+    color: var(--gray-600);
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .badge-help {
+    background: #fce7f3;
+    color: #9d174d;
+    font-size: 8px;
+    padding: 1px 4px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 1px;
+  }
+
+  /* CONTACT */
+  .contact-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 10px;
+  }
+  .contact-group-header {
+    background: linear-gradient(90deg, var(--jeju-deep), var(--jeju-sky));
+    color: white;
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    gap: 10px;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .contact-info { flex: 1; min-width: 0; }
+  .contact-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-800);
+  }
+  .contact-role {
+    font-size: 11px;
+    color: var(--gray-600);
+    margin-top: 1px;
+  }
+  .call-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .call-btn:active { opacity: 0.8; }
+
+  /* SCHEDULE */
+  .day-tab-wrap {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .day-tab-wrap::-webkit-scrollbar { display: none; }
+  .day-btn {
+    flex-shrink: 0;
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: all 0.2s;
+  }
+  .day-btn.active {
+    background: var(--jeju-sky);
+    border-color: var(--jeju-sky);
+    color: white;
+  }
+  .team-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .team-btn {
+    flex: 1;
+    background: var(--gray-100);
+    border: none;
+    border-radius: 8px;
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: all 0.15s;
+  }
+  .team-btn.active { background: var(--jeju-deep); color: white; }
+  .schedule-panel { display: none; }
+  .schedule-panel.active { display: block; }
+  .schedule-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .schedule-item:last-child { border-bottom: none; }
+  .sched-time {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--jeju-sky);
+    min-width: 42px;
+    padding-top: 1px;
+  }
+  .sched-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--jeju-teal);
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .sched-act {
+    font-size: 13px;
+    color: var(--gray-800);
+    line-height: 1.4;
+  }
+  .sched-icon { margin-right: 4px; }
+
+  /* VENDOR */
+  .vendor-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+  }
+  .vendor-header {
+    background: linear-gradient(90deg, var(--jeju-green), #40916c);
+    color: white;
+    padding: 12px 16px;
+  }
+  .vendor-name { font-size: 16px; font-weight: 700; }
+  .vendor-tag {
+    background: rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 11px;
+    display: inline-block;
+    margin-top: 4px;
+  }
+  .vendor-body { padding: 14px 16px; }
+  .info-row {
+    display: flex;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 13px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label {
+    color: var(--gray-600);
+    font-weight: 600;
+    min-width: 60px;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+  .info-val { color: var(--gray-800); }
+  .flight-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .flight-table th {
+    background: var(--jeju-deep);
+    color: white;
+    padding: 7px 8px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .flight-table td {
+    padding: 8px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .flight-table tr:last-child td { border-bottom: none; }
+  .flight-table tr:nth-child(even) td { background: var(--gray-50); }
+
+  /* BUS */
+  .bus-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 10px;
+  }
+  .bus-header {
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .bus-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+  }
+  .bus-info { flex: 1; }
+  .bus-label { font-size: 13px; font-weight: 700; }
+  .bus-meta { font-size: 11px; color: var(--gray-600); margin-top: 2px; }
+  .bus-teachers {
+    padding: 10px 14px;
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .teacher-tag {
+    display: inline-block;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--jeju-deep);
+    margin: 2px;
+  }
+
+  /* ROOM */
+  .search-wrap {
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .search-input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: 2px solid var(--gray-200);
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  .search-input:focus { border-color: var(--jeju-sky); }
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--gray-600);
+  }
+  #searchResult {
+    background: #fff7ed;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    display: none;
+  }
+  .result-name { font-size: 18px; font-weight: 900; color: var(--jeju-deep); }
+  .result-detail { font-size: 13px; color: var(--gray-600); margin-top: 4px; }
+  .room-section { margin-bottom: 18px; }
+  .room-header {
+    background: linear-gradient(90deg, var(--jeju-deep), var(--jeju-sky));
+    color: white;
+    padding: 8px 14px;
+    border-radius: 10px 10px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+  }
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 10px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
+  .room-box {
+    border: 1.5px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--gray-50);
+  }
+  .room-num {
+    background: var(--jeju-sky);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .room-members { padding: 6px 8px; }
+  .room-member {
+    font-size: 12px;
+    padding: 3px 0;
+    border-bottom: 1px solid var(--gray-100);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .room-member:last-child { border-bottom: none; }
+  .crown { font-size: 11px; }
+  .highlight { background: #fef08a; border-radius: 4px; padding: 0 2px; }
+
+  /* FLOOR PLAN */
+  .floorplan-wrap { overflow-x: auto; }
+  .floorplan-note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--jeju-deep);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .floor-section { margin-bottom: 20px; }
+  .floor-label {
+    background: var(--jeju-deep);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .floor-layout {
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .floor-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .floor-room {
+    background: #dbeafe;
+    border: 1.5px solid #93c5fd;
+    border-radius: 8px;
+    min-width: 60px;
+    text-align: center;
+    padding: 6px 8px;
+  }
+  .floor-room-num { font-size: 11px; font-weight: 700; color: var(--jeju-deep); }
+  .floor-room-members { font-size: 9px; color: var(--gray-600); margin-top: 2px; }
+  .floor-room.teacher {
+    background: #dcfce7;
+    border-color: #86efac;
+  }
+  .floor-room.teacher .floor-room-num { color: var(--jeju-green); }
+  .floor-corridor {
+    background: var(--gray-200);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 10px;
+    color: var(--gray-600);
+    text-align: center;
+    margin: 4px 0;
+    width: 100%;
+  }
+
+  /* NIGHT DUTY */
+  .duty-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .duty-header {
+    background: linear-gradient(90deg, #1e3a5f, #0077b6);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .duty-night {
+    background: rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .duty-time { font-size: 13px; font-weight: 700; }
+  .duty-body { padding: 14px 16px; }
+  .duty-team {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    background: var(--gray-50);
+    border-radius: 10px;
+    border-left: 3px solid var(--jeju-sky);
+  }
+  .duty-team-label { font-size: 11px; font-weight: 700; color: var(--jeju-sky); margin-bottom: 6px; }
+  .duty-teachers { display: flex; flex-wrap: wrap; gap: 6px; }
+  .duty-teacher-tag {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+  .rules-list { padding-left: 4px; }
+  .rules-list li {
+    font-size: 13px;
+    color: var(--gray-800);
+    padding: 5px 0 5px 18px;
+    border-bottom: 1px solid var(--gray-100);
+    position: relative;
+    line-height: 1.5;
+  }
+  .rules-list li:last-child { border-bottom: none; }
+  .rules-list li::before {
+    content: '•';
+    color: var(--jeju-sky);
+    position: absolute;
+    left: 4px;
+    font-weight: 900;
+  }
+
+  /* SUMMARY CHIPS */
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .chip {
+    background: white;
+    border: 1.5px solid var(--jeju-sky);
+    color: var(--jeju-deep);
+    border-radius: 50px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: all 0.2s;
+  }
+  .chip:active { opacity: 0.75; }
+  .chip.accent, .chip.active-chip {
+    background: var(--jeju-sky);
+    color: white;
+    border-color: var(--jeju-sky);
+  }
+
+  /* TEAM FILTER */
+  .team-filter {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .team-filter::-webkit-scrollbar { display: none; }
+  .tf-btn {
+    flex-shrink: 0;
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    color: var(--gray-600);
+  }
+  .tf-btn.active { background: var(--jeju-sky); border-color: var(--jeju-sky); color: white; }
+
+  /* NOTICE BANNER */
+  .notice {
+    background: linear-gradient(135deg, #fff7ed, #fef3c7);
+    border: 1.5px solid #fcd34d;
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #78350f;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <span class="school-badge">경산고등학교</span>
+    <span class="trip-label">✈️ 학생용</span>
+  </div>
+  <div class="header-title">2026 즐거운 제주도 수학여행 🌴</div>
+  <div class="header-subtitle">2026. 6. 8(월) ~ 6. 11(목) · 3박 4일 · 260명</div>
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active" onclick="showTab('students')" role="tab">👥 참가학생</button>
+    <button class="tab-btn" onclick="showTab('contacts')" role="tab">📞 비상연락망</button>
+    <button class="tab-btn" onclick="showTab('schedule')" role="tab">📅 일정표</button>
+    <button class="tab-btn" onclick="showTab('vendors')" role="tab">🏢 항공·숙소</button>
+    <button class="tab-btn" onclick="showTab('bus')" role="tab">🚌 버스배정</button>
+    <button class="tab-btn" onclick="showTab('rooms')" role="tab">🛏️ 방배정</button>
+    <button class="tab-btn" onclick="showTab('safety')" role="tab">🦺 안전교육</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ===== 참가학생 ===== -->
+<div id="tab-students" class="tab-content active">
+  <div class="chip-row">
+    <button class="chip accent active-chip" onclick="filterStudents('all')" id="chip-all">👥 전체 260명</button>
+    <button class="chip" onclick="filterStudents('teacher')" id="chip-teacher">📋 교직원 20명</button>
+    <button class="chip" onclick="filterStudents('1jin')" id="chip-1jin">🚌 1진 (1·4·5·9·10반)</button>
+    <button class="chip" onclick="filterStudents('2jin')" id="chip-2jin">🚌 2진 (2·3·6·7·8반)</button>
+  </div>
+  <div class="notice">⚠️ 도움반 학생 4명 별도 인솔 체계 운영 (중증학생 인솔교사: 김효정·김나영)</div>
+
+  <div id="studentList"></div>
+</div>
+
+<!-- ===== 업무연락망 ===== -->
+<div id="tab-contacts" class="tab-content">
+  <div class="card" style="background:linear-gradient(135deg,#fff3cd,#fef9e7);border:2px solid #f59e0b;margin-bottom:12px;">
+    <div style="font-size:15px;font-weight:800;color:#92400e;margin-bottom:10px;">🚨 비상 상황 발생 시 연락 순서</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="background:#ef4444;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;">1</div>
+        <div style="font-size:14px;font-weight:600;color:#1e293b;">담임 선생님께 먼저 연락</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding-left:4px;">
+        <div style="color:#94a3b8;font-size:18px;">↓</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="background:#ef4444;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;">2</div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:#1e293b;">김지은 선생님 또는 박경호 선생님께 연락</div>
+          <div style="display:flex;gap:8px;margin-top:4px;">
+            <a href="tel:010-7127-0583" style="background:#0077b6;color:white;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;text-decoration:none;">📞 김지은 010-7127-0583</a>
+            <a href="tel:010-2899-6028" style="background:#059669;color:white;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;text-decoration:none;">📞 박경호 010-2899-6028</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notice">📌 전화번호를 탭하면 바로 전화 연결됩니다.</div>
+
+  <div class="contact-card">
+    <div class="contact-group-header">🎯 총괄</div>
+    <div class="contact-row">
+      <div class="contact-avatar" style="background:#dbeafe; font-size:18px;">👨‍💼</div>
+      <div class="contact-info">
+        <div class="contact-name">한수용</div>
+        <div class="contact-role">교감 · 전체 총괄</div>
+      </div>
+      
+    </div>
+    <div class="contact-row">
+      <div class="contact-avatar" style="background:#fef9c3; font-size:18px;">⭐</div>
+      <div class="contact-info">
+        <div class="contact-name">김지은 ⭐</div>
+        <div class="contact-role">학년부장 · 1진 대표 · 10반 담임</div>
+      </div>
+      <a class="call-btn" href="tel:010-7127-0583">📞 전화</a>
+    </div>
+    <div class="contact-row">
+      <div class="contact-avatar" style="background:#dcfce7; font-size:18px;">⭐</div>
+      <div class="contact-info">
+        <div class="contact-name">박경호 ⭐</div>
+        <div class="contact-role">2진 대표 · 2반 담임</div>
+      </div>
+      <a class="call-btn" href="tel:010-2899-6028">📞 전화</a>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-group-header">🚌 1진 인솔교사 (6/8 13:40 LJ565)</div>
+    <div id="contacts1jin"></div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-group-header">🚌 2진 인솔교사 (6/8 15:00 LJ567)</div>
+    <div id="contacts2jin"></div>
+  </div>
+
+</div>
+
+<!-- ===== 일정표 ===== -->
+<div id="tab-schedule" class="tab-content">
+  <div class="notice">✈️ A·B팀: 6/8 13:40 출발(LJ565) · 숙소: 스위트오션 스위트메이서귀포호텔 / C·D팀: 6/8 15:00 출발(LJ567)</div>
+
+  <div class="day-tab-wrap">
+    <button class="day-btn active" onclick="showDay(1)">1일차<br><small>6/8 월</small></button>
+    <button class="day-btn" onclick="showDay(2)">2일차<br><small>6/9 화</small></button>
+    <button class="day-btn" onclick="showDay(3)">3일차<br><small>6/10 수</small></button>
+    <button class="day-btn" onclick="showDay(4)">4일차<br><small>6/11 목</small></button>
+  </div>
+
+  <div class="team-tabs">
+    <button class="team-btn active" onclick="showTeam('A')">A팀 (9·10반)</button>
+    <button class="team-btn" onclick="showTeam('B')">B팀 (1·4·5반)</button>
+    <button class="team-btn" onclick="showTeam('C')">C팀 (2·6·7반)</button>
+    <button class="team-btn" onclick="showTeam('D')">D팀 (3·8반)</button>
+  </div>
+
+  <div id="scheduleDisplay"></div>
+</div>
+
+<!-- ===== 계약업체 ===== -->
+<div id="tab-vendors" class="tab-content">
+
+  <div class="vendor-card">
+    <div class="vendor-header" style="background:linear-gradient(90deg,#1a56db,#3b82f6);">
+      <div class="vendor-name">✈️ 진에어 (LJ)</div>
+      <span class="vendor-tag">항공사 · 총 280석</span>
+    </div>
+    <div class="vendor-body">
+      <table class="flight-table">
+        <thead>
+          <tr><th>날짜</th><th>구간</th><th>출발</th><th>편명</th><th>예약번호</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6/8</td><td>부산→제주</td><td>13:40</td><td>LJ 565</td><td rowspan="2" style="font-weight:700;color:var(--jeju-deep);">B7U8RE<br>A4677W</td></tr>
+          <tr><td>6/11</td><td>제주→부산</td><td>13:00</td><td>LJ 562</td></tr>
+          <tr><td>6/8</td><td>부산→제주</td><td>15:00</td><td>LJ 567</td><td rowspan="2" style="font-weight:700;color:var(--jeju-deep);">HDB69P<br>M3677T</td></tr>
+          <tr><td>6/11</td><td>제주→부산</td><td>16:40</td><td>LJ 564</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+</div>
+
+<!-- ===== 버스배정 ===== -->
+<div id="tab-bus" class="tab-content">
+  <div style="display:flex;gap:8px;margin-bottom:12px;">
+    <button class="bus-type-btn active" data-type="airport" onclick="switchBus('airport')"
+      style="flex:1;padding:12px;border-radius:12px;border:2px solid var(--jeju-sky);background:var(--jeju-sky);color:white;font-size:13px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;">
+      🏫 학교↔공항<br><span style="font-size:11px;font-weight:400;opacity:0.9;">8대 운영</span>
+    </button>
+    <button class="bus-type-btn" data-type="jeju" onclick="switchBus('jeju')"
+      style="flex:1;padding:12px;border-radius:12px;border:2px solid var(--gray-200);background:white;color:var(--gray-600);font-size:13px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;">
+      🌴 제주 현지<br><span style="font-size:11px;font-weight:400;">10대 운영</span>
+    </button>
+  </div>
+  <div id="busNotice" class="notice">🚌 5반 → 1·4반 버스 분승 / 2반 → 6·7반 버스 분승</div>
+
+  <div id="busCards"></div>
+</div>
+
+<!-- ===== 방배정 ===== -->
+<div id="tab-rooms" class="tab-content">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" type="text" id="roomSearch" placeholder="학생 이름으로 검색..." oninput="searchRoom(this.value)">
+  </div>
+  <div id="searchResult"></div>
+
+  <div class="team-filter">
+    <button class="tf-btn active" onclick="filterRooms('all')">전체</button>
+    <button class="tf-btn" onclick="filterRooms('A')">A팀</button>
+    <button class="tf-btn" onclick="filterRooms('B')">B팀</button>
+    <button class="tf-btn" onclick="filterRooms('C')">C팀</button>
+    <button class="tf-btn" onclick="filterRooms('D')">D팀</button>
+  </div>
+
+  <div id="roomList"></div>
+</div>
+
+<!-- ===== 안전교육 ===== -->
+<div id="tab-safety" class="tab-content">
+  <div class="notice">🦺 수학여행 전 반드시 숙지하세요! 안전하고 즐거운 여행을 위한 필수 안내입니다.</div>
+
+  <div class="card">
+    <div class="card-title">🎒 출발 전 준비물</div>
+    <ul class="rules-list">
+      <li>체육복, 운동화 (가볍고 간편한 것), 우의(우산)</li>
+      <li>세면도구 (칫솔·치약 반드시 개인 지참), 수건</li>
+      <li>🏨 <b>호텔 제공</b>: 샴푸·린스·바디워시·드라이기·수건(1일 2개)·생수(1일 1병) — 별도 준비 불필요</li>
+      <li>간편복, 티셔츠, 양말 (여분 포함)</li>
+      <li>학생증, 개인 상비약</li>
+      <li>용돈은 필요한 만큼만 — 고가품·귀중품 지참 금지</li>
+      <li>💰 <b>1일차 점심 식사비 별도 준비</b> (공항 내 자유식)</li>
+      <li>차멀미 있는 경우 출발 30분 전 멀미약 복용</li>
+      <li>🎮 <b>다이나믹메이즈용</b> 긴 양말(발목양말 불가) + 긴 바지 준비 — 현장 구입 가능 3,000원</li>
+      <li>🎢 <b>9.81파크 앱</b> 사전 설치 (출발 전)</li>
+      <li>🌋 <b>거문오름</b>은 운동화만 가능 — 슬리퍼·샌들·크록스 착용 금지</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✈️ 항공기 탑승 유의사항</div>
+    <ul class="rules-list">
+      <li>집합 시간 엄수 — 지각 시 탑승 불가</li>
+      <li>승무원 지시에 따르고, 안전벨트 반드시 착용</li>
+      <li>비행 중 전자기기는 비행기 모드로 전환</li>
+      <li>경산고 학생으로서 품위 유지</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚌 버스 탑승 유의사항</div>
+    <ul class="rules-list">
+      <li>승하차 시 질서를 지키고, 승차 전 화장실 미리 다녀오기</li>
+      <li>안전벨트 반드시 착용</li>
+      <li>버스 안에서 큰소리로 떠들지 않기</li>
+      <li>달리는 버스 창밖으로 손·머리 내밀기 금지</li>
+      <li>버스 정차 후 선생님 지시에 따라 하차</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏝️ 활동 중 유의사항</div>
+    <ul class="rules-list">
+      <li>항상 단체행동 — 선생님 허락 없이 개별 이탈 금지</li>
+      <li>관람 시 경건한 자세로 질서와 시간 준수</li>
+      <li>사람 많은 곳에서 공중도덕 준수, 타인 피해 금지</li>
+      <li>해안가 사진 촬영 시 파도·물에 주의</li>
+      <li>선물·기념품은 신중히 — 고가품 구입 자제</li>
+      <li>더위·햇빛 주의 (모자·선크림 활용), 충분한 수분 섭취</li>
+      <li>이상 증상(복통·발열 등) 즉시 인솔 선생님께 보고</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏨 숙소 유의사항</div>
+    <ul class="rules-list">
+      <li>취침 시간(22:00) 엄수 — 허락 없이 다른 방 방문 금지</li>
+      <li>선생님 허락 없이 외출 절대 금지</li>
+      <li>음주·흡연·도박(카드·화투 등) 절대 금지</li>
+      <li>기물 훼손·소란 행위 금지</li>
+      <li>식사는 조용하고 질서 있게</li>
+      <li>퇴실 시 침구 정리, 개인 소지품 확인</li>
+      <li>비상구 위치 사전 확인, 비상시 신속 대피</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📍 장소별 특별 유의사항</div>
+    <div style="margin-bottom:10px;">
+      <div style="font-size:12px;font-weight:700;color:var(--jeju-sky);margin-bottom:5px;">🌋 거문오름 · 성산일출봉</div>
+      <ul class="rules-list">
+        <li>지정 탐방로 이탈 금지 — 생태 보호구역</li>
+        <li>음식물 반입 금지, 쓰레기 되가져오기</li>
+        <li><b>거문오름: 운동화만 입장 가능</b> — 슬리퍼·샌들·크록스 등 입장 불가</li>
+      </ul>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div style="font-size:12px;font-weight:700;color:var(--jeju-sky);margin-bottom:5px;">🌊 용머리해안 · 주상절리</div>
+      <ul class="rules-list">
+        <li>파도 가까이 접근 금지 — 갑작스러운 너울 위험</li>
+        <li>젖은 암석 위 뛰거나 장난 금지</li>
+      </ul>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div style="font-size:12px;font-weight:700;color:var(--jeju-sky);margin-bottom:5px;">🎢 9.81파크</div>
+      <ul class="rules-list">
+        <li>안전장구 착용 후 이용, 무리한 행동 금지</li>
+        <li>지정 구역 외 출입 금지</li>
+        <li><b>앱 사전 설치 필수</b> — 출발 전 9.81파크 앱 설치해 오기</li>
+      </ul>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div style="font-size:12px;font-weight:700;color:var(--jeju-sky);margin-bottom:5px;">🎮 다이나믹메이즈</div>
+      <ul class="rules-list">
+        <li><b>긴 양말 착용 필수</b> (발목양말 불가 — 현장 구입 가능 3,000원)</li>
+        <li><b>긴 바지 착용 필수</b> (반바지 착용 시 입장 제한)</li>
+        <li>안전장구 착용 후 이용, 무리한 행동 금지</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--jeju-sky);margin-bottom:5px;">🛒 올레시장 · 동문시장</div>
+      <ul class="rules-list">
+        <li>인파 속 소매치기 주의, 소지품 잘 챙기기</li>
+        <li>길을 잃었을 경우 제자리에서 인솔 선생님 전화</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<script>
+// ========== DATA ==========
+
+const classData = {
+  '1반': {
+    team: 'B', jin: '1진',
+    teacher: '전은영',
+    students: [
+      {no:'20101',name:'강서빈'},{no:'20102',name:'권동원',note:'도움'},{no:'20103',name:'권민재'},
+      {no:'20104',name:'권은찬'},{no:'20105',name:'김범수'},{no:'20106',name:'김윤재'},
+      {no:'20107',name:'김재경'},{no:'20108',name:'김준성'},{no:'20109',name:'김지환'},
+      {no:'20111',name:'박기성'},{no:'20112',name:'박성훈'},
+      {no:'20114',name:'손영훈'},{no:'20115',name:'송은우'},
+      {no:'20116',name:'오석현'},{no:'20117',name:'원준서'},{no:'20118',name:'이건우'},
+      {no:'20120',name:'이인호'},
+      {no:'20122',name:'장민제'},{no:'20124',name:'정영훈'},
+      {no:'20125',name:'정은찬'},{no:'20126',name:'최빈'}
+    ]
+  },
+  '2반': {
+    team: 'C', jin: '2진',
+    teacher: '박경호',
+    students: [
+      {no:'20201',name:'공대훈'},{no:'20202',name:'구건우'},
+      {no:'20204',name:'김문찬'},{no:'20205',name:'김민건'},
+      {no:'20207',name:'김지헌'},{no:'20209',name:'신상명'},
+      {no:'20211',name:'은지민'},{no:'20212',name:'이민제'},
+      {no:'20214',name:'이서진'},{no:'20215',name:'이승훈'},
+      {no:'20216',name:'이정재'},{no:'20217',name:'이창민'},{no:'20218',name:'이해인'},
+      {no:'20219',name:'이현탁'},{no:'20220',name:'장승민'},{no:'20221',name:'정우성'},
+      {no:'20223',name:'조현준'},
+      {no:'20225',name:'추헌욱'}
+    ]
+  },
+  '3반': {
+    team: 'D', jin: '2진',
+    teacher: '정득진',
+    students: [
+      {no:'20301',name:'강민성'},{no:'20302',name:'곽태호'},{no:'20303',name:'김경빈'},
+      {no:'20304',name:'김민찬'},{no:'20305',name:'김법경'},{no:'20306',name:'김수찬'},
+      {no:'20307',name:'김승건'},{no:'20308',name:'김지훈'},{no:'20309',name:'박주형'},
+      {no:'20310',name:'손하진'},{no:'20311',name:'우민우'},{no:'20312',name:'윤지성'},
+      {no:'20313',name:'이일준'},{no:'20314',name:'이재인'},{no:'20315',name:'이정환'},
+      {no:'20316',name:'이정훈'},{no:'20318',name:'이진혁'},
+      {no:'20319',name:'임승빈'},{no:'20320',name:'장우영'},{no:'20321',name:'정효찬'},
+      {no:'20322',name:'조성규'},{no:'20323',name:'최도빈'},{no:'20324',name:'최은총'},
+      {no:'20325',name:'허선우'},{no:'20326',name:'홍재용'}
+    ]
+  },
+  '4반': {
+    team: 'B', jin: '1진',
+    teacher: '김나영',
+    students: [
+      {no:'20401',name:'권경호'},{no:'20402',name:'김도운',note:'도움'},{no:'20403',name:'김동완'},
+      {no:'20404',name:'김동휘'},{no:'20405',name:'김민서'},{no:'20406',name:'김은수'},
+      {no:'20407',name:'김주영'},{no:'20408',name:'김태영'},{no:'20409',name:'노승민'},
+      {no:'20410',name:'박민석',note:'도움'},{no:'20411',name:'박주현'},{no:'20412',name:'배준호'},
+      {no:'20413',name:'백부겸'},{no:'20414',name:'변경민'},{no:'20415',name:'우승범'},
+      {no:'20416',name:'윤정우'},{no:'20417',name:'이경욱'},{no:'20418',name:'이예승'},
+      {no:'20419',name:'이원우'},{no:'20420',name:'이효건'},{no:'20421',name:'정찬휘'},
+      {no:'20422',name:'조현범'},{no:'20423',name:'최승배',note:'도움'},{no:'20424',name:'한승민'}
+    ]
+  },
+  '5반': {
+    team: 'B', jin: '1진',
+    teacher: '김병진',
+    students: [
+      {no:'20501',name:'강민제'},{no:'20502',name:'김규현'},{no:'20503',name:'김민서'},
+      {no:'20506',name:'김성욱'},
+      {no:'20507',name:'남유성'},{no:'20508',name:'박민서'},{no:'20509',name:'박서형'},
+      {no:'20511',name:'손민제'},
+      {no:'20513',name:'신진우'},{no:'20514',name:'안시후'},{no:'20515',name:'오승헌'},
+      {no:'20517',name:'유재영'},{no:'20518',name:'유지훈'},
+      {no:'20520',name:'이재민'},{no:'20521',name:'이태혁'},
+      {no:'20522',name:'정열'},{no:'20523',name:'정원영'},{no:'20524',name:'최성원'},
+      {no:'20525',name:'한승민'},{no:'20526',name:'허규현'},{no:'20527',name:'허재온'},{no:'20528',name:'황지후'}
+    ]
+  },
+  '6반': {
+    team: 'C', jin: '2진',
+    teacher: '배은혜',
+    students: [
+      {no:'20601',name:'김민성'},{no:'20602',name:'김재현'},{no:'20603',name:'김정환'},
+      {no:'20604',name:'김주혁'},{no:'20605',name:'김지성'},{no:'20606',name:'김택한'},
+      {no:'20607',name:'남재원'},{no:'20608',name:'박민재'},{no:'20609',name:'배수호'},
+      {no:'20610',name:'배종윤'},{no:'20612',name:'안준우'},
+      {no:'20613',name:'유효준'},{no:'20614',name:'윤기범'},{no:'20615',name:'윤유일'},
+      {no:'20616',name:'이예훈'},{no:'20617',name:'이정우'},{no:'20618',name:'이준호'},
+      {no:'20619',name:'이하진'},{no:'20620',name:'임무겸'},{no:'20621',name:'장찬희'},
+      {no:'20622',name:'정민석'},{no:'20623',name:'정해영'},{no:'20624',name:'조재음'},
+      {no:'20625',name:'최민재'},{no:'20626',name:'허찬경'},{no:'20627',name:'홍동훈'}
+    ]
+  },
+  '7반': {
+    team: 'C', jin: '2진',
+    teacher: '김재인',
+    students: [
+      {no:'20701',name:'김도현'},{no:'20702',name:'김성현'},{no:'20703',name:'김시우'},
+      {no:'20704',name:'김시후'},{no:'20705',name:'김영현'},{no:'20706',name:'김정헌'},
+      {no:'20707',name:'김지환'},{no:'20708',name:'김진우'},{no:'20709',name:'김채환'},
+      {no:'20710',name:'도대오'},{no:'20711',name:'류재선'},{no:'20712',name:'문성빈'},
+      {no:'20713',name:'박윤호'},{no:'20714',name:'심준보'},{no:'20715',name:'우창민'},
+      {no:'20716',name:'유효준'},{no:'20717',name:'이동근'},{no:'20718',name:'이승윤'},
+      {no:'20720',name:'장문익'},{no:'20721',name:'장민준'},
+      {no:'20722',name:'장하율'},{no:'20723',name:'전유성'},{no:'20724',name:'차현민'},
+      {no:'20725',name:'천영훈'},{no:'20726',name:'홍지훈'}
+    ]
+  },
+  '8반': {
+    team: 'D', jin: '2진',
+    teacher: '최미연',
+    students: [
+      {no:'20801',name:'구건우'},{no:'20802',name:'권덕원'},{no:'20803',name:'권순재'},
+      {no:'20804',name:'김건우'},{no:'20805',name:'김동현'},{no:'20806',name:'김연우'},
+      {no:'20807',name:'김우진'},{no:'20808',name:'김주원'},{no:'20809',name:'김준희'},
+      {no:'20810',name:'나겸'},{no:'20811',name:'도준수'},{no:'20812',name:'박민준'},
+      {no:'20813',name:'박민찬'},{no:'20814',name:'박종찬'},{no:'20815',name:'박지후'},
+      {no:'20816',name:'박찬혁'},{no:'20817',name:'서윤수'},{no:'20818',name:'석민규'},
+      {no:'20819',name:'오현우'},{no:'20820',name:'유진우'},{no:'20821',name:'이경민'},
+      {no:'20822',name:'이여준'},{no:'20823',name:'이윤건'},{no:'20824',name:'이주환'},
+      {no:'20825',name:'전영우'},{no:'20826',name:'정영훈'},{no:'20827',name:'지준영'},{no:'20828',name:'최연철'}
+    ]
+  },
+  '9반': {
+    team: 'A', jin: '1진',
+    teacher: '박명진',
+    students: [
+      {no:'20901',name:'강민석'},{no:'20902',name:'김건우'},{no:'20903',name:'김관명'},
+      {no:'20904',name:'김기태'},{no:'20905',name:'김민성'},{no:'20906',name:'김성윤'},
+      {no:'20907',name:'김재혁'},{no:'20908',name:'김준'},{no:'20909',name:'김지환'},
+      {no:'20910',name:'김형준'},{no:'20911',name:'남우영'},{no:'20912',name:'문주호'},
+      {no:'20913',name:'백승우'},{no:'20914',name:'신유철'},{no:'20915',name:'염정운'},
+      {no:'20916',name:'원동건'},{no:'20917',name:'이근욱'},{no:'20918',name:'이유승'},
+      {no:'20919',name:'이준서'},{no:'20921',name:'정재호'},
+      {no:'20922',name:'지이찬'},{no:'20923',name:'천승원'},{no:'20924',name:'최성민'},
+      {no:'20925',name:'최성현'},{no:'20926',name:'최현우'},{no:'20927',name:'허성준'}
+    ]
+  },
+  '10반': {
+    team: 'A', jin: '1진',
+    teacher: '김지은',
+    students: [
+      {no:'21001',name:'강현서'},{no:'21002',name:'김도영'},{no:'21003',name:'김도완'},
+      {no:'21004',name:'김범준'},{no:'21005',name:'노기범'},{no:'21006',name:'문정민'},
+      {no:'21007',name:'박기륜'},{no:'21008',name:'박준영'},{no:'21009',name:'박태현'},
+      {no:'21010',name:'서승완'},{no:'21011',name:'신재민'},{no:'21012',name:'신지후'},
+      {no:'21013',name:'심세윤'},{no:'21014',name:'양현진'},{no:'21015',name:'윤승현'},
+      {no:'21016',name:'이도윤'},{no:'21018',name:'이석현'},
+      {no:'21019',name:'이찬유'},{no:'21020',name:'전부겸'},{no:'21021',name:'정민수'},
+      {no:'21022',name:'정주현'},{no:'21023',name:'지현우'},{no:'21024',name:'한지후'},
+      {no:'21025',name:'허태웅'},{no:'21026',name:'홍준서'}
+    ]
+  }
+};
+
+// 학교↔공항 8대
+const busAirportData = [
+  {num:'1호차', team:'A', cls:'9반', teachers:['박명진','하지연'], students:26, total:28, color:'#0077b6', note:'',
+    members:[{label:'9반 (26명)', names:['강민석','김건우','김관명','김기태','김민성','김성윤','김재혁','김준','김지환','김형준','남우영','문주호','백승우','신유철','염정운','원동건','이근욱','이유승','이준서','정재호','지이찬','천승원','최성민','최성현','최현우','허성준']}]},
+  {num:'2호차', team:'A', cls:'10반', teachers:['김지은','한수용'], students:25, total:27, color:'#0077b6', note:'',
+    members:[{label:'10반 (25명)', names:['강현서','김도영','김도완','김범준','노기범','문정민','박기륜','박준영','박태현','서승완','신재민','신지후','심세윤','양현진','윤승현','이도윤','이석현','이찬유','전부겸','정민수','정주현','지현우','한지후','허태웅','홍준서']}]},
+  {num:'3호차', team:'B', cls:'1반(권동원제외) + 5반 일부', teachers:['전은영','김주상','이해선'], students:34, total:37, color:'#7c3aed',
+    note:'5반 분승(14명)',
+    members:[
+      {label:'1반 (20명, 권동원 제외)', names:['강서빈','권민재','권은찬','김범수','김윤재','김재경','김준성','김지환','박기성','박성훈','손영훈','송은우','오석현','원준서','이건우','이인호','장민제','정영훈','정은찬','최빈']},
+      {label:'5반 분승 (14명)', names:['강민제','김규현','김민서','김성욱','남유성','박민서','박서형','손민제','신진우','안시후','오승헌','유재영','유지훈','이재민']}
+    ]},
+  {num:'4호차', team:'B', cls:'4반 + 5반 일부 + 권동원', teachers:['김나영','김효정','김병진'], students:33, total:36, color:'#7c3aed',
+    note:'5반 분승(8명)',
+    members:[
+      {label:'4반+권동원 (25명)', names:['권동원','권경호','김도운','김동완','김동휘','김민서','김은수','김주영','김태영','노승민','박민석','박주현','배준호','백부겸','변경민','우승범','윤정우','이경욱','이예승','이원우','이효건','정찬휘','조현범','최승배','한승민']},
+      {label:'5반 분승 (8명)', names:['이태혁','정열','정원영','최성원','한승민','허규현','허재온','황지후']}
+    ]},
+  {num:'5호차', team:'D', cls:'3반', teachers:['정득진','김문섭'], students:25, total:27, color:'#dc2626', note:'',
+    members:[{label:'3반 (25명)', names:['강민성','곽태호','김경빈','김민찬','김법경','김수찬','김승건','김지훈','박주형','손하진','우민우','윤지성','이일준','이재인','이정환','이정훈','이진혁','임승빈','장우영','정효찬','조성규','최도빈','최은총','허선우','홍재용']}]},
+  {num:'6호차', team:'D', cls:'8반', teachers:['최미연','윤성원'], students:28, total:30, color:'#dc2626', note:'',
+    members:[{label:'8반 (28명)', names:['구건우','권덕원','권순재','김건우','김동현','김연우','김우진','김주원','김준희','나겸','도준수','박민준','박민찬','박종찬','박지후','박찬혁','서윤수','석민규','오현우','유진우','이경민','이여준','이윤건','이주환','전영우','정영훈','지준영','최연철']}]},
+  {num:'7호차', team:'C', cls:'6반 + 2반 일부', teachers:['배은혜','김진규','최은정'], students:35, total:38, color:'#059669',
+    note:'2반 분승(9명)',
+    members:[
+      {label:'6반 (26명)', names:['김민성','김재현','김정환','김주혁','김지성','김택한','남재원','박민재','배수호','배종윤','안준우','유효준','윤기범','윤유일','이예훈','이정우','이준호','이하진','임무겸','장찬희','정민석','정해영','조재음','최민재','허찬경','홍동훈']},
+      {label:'2반 분승 (9명)', names:['공대훈','구건우','김문찬','김민건','김지헌','신상명','은지민','이민제','이서진']}
+    ]},
+  {num:'8호차', team:'C', cls:'7반 + 2반 일부', teachers:['김재인','최정원','박경호'], students:34, total:37, color:'#059669',
+    note:'2반 분승(9명)',
+    members:[
+      {label:'7반 (25명)', names:['김도현','김성현','김시우','김시후','김영현','김정헌','김지환','김진우','김채환','도대오','류재선','문성빈','박윤호','심준보','우창민','유효준','이동근','이승윤','장문익','장민준','장하율','전유성','차현민','천영훈','홍지훈']},
+      {label:'2반 분승 (9명)', names:['이승훈','이정재','이창민','이해인','이현탁','장승민','정우성','조현준','추헌욱']}
+    ]},
+];
+
+// 제주 현지 10대
+const busJejuData = [
+  {num:'1호차', team:'A', cls:'9반', teachers:['박명진','하지연'], students:27, total:29, color:'#0077b6', note:'',
+    members:[{label:'9반 (27명)', names:['강민석','김건우','김관명','김기태','김민성','김성윤','김재혁','김준','김지환','김형준','남우영','문주호','백승우','신유철','염정운','원동건','이근욱','이유승','이준서','정승하','정재호','지이찬','천승원','최성민','최성현','최현우','허성준']}]},
+  {num:'2호차', team:'A', cls:'10반', teachers:['김지은 ⭐','한수용'], students:25, total:27, color:'#0077b6', note:'',
+    members:[{label:'10반 (25명)', names:['강현서','김도영','김도완','김범준','노기범','문정민','박기륜','박준영','박태현','서승완','신재민','신지후','심세윤','양현진','윤승현','이도윤','이석현','이찬유','전부겸','정민수','정주현','지현우','한지후','허태웅','홍준서']}]},
+  {num:'3호차', team:'B', cls:'1반', teachers:['전은영','김주상'], students:23, total:25, color:'#7c3aed', note:'',
+    members:[{label:'1반 (23명)', names:['강서빈','권동원','권민재','권은찬','김범수','김윤재','김재경','김준성','김지환','박건우','박기성','박성훈','배송찬','손영훈','송은우','오석현','원준서','이건우','이인호','장민제','정영훈','정은찬','최빈']}]},
+  {num:'4호차', team:'B', cls:'4반+권동원', teachers:['김나영','김효정'], students:25, total:26, color:'#7c3aed', note:'',
+    members:[{label:'4반+권동원 (25명)', names:['권동원','권경호','김도운','김동완','김동휘','김민서','김은수','김주영','김태영','노승민','박민석','박주현','배준호','백부겸','변경민','우승범','윤정우','이경욱','이예승','이원우','이효건','정찬휘','조현범','최승배','한승민']}]},
+  {num:'5호차', team:'B', cls:'5반', teachers:['김병진','이해선'], students:23, total:25, color:'#7c3aed', note:'',
+    members:[{label:'5반 (23명)', names:['강민제','김규현','김민서','김성욱','남유성','박민서','박서형','박성환','손민제','신진우','안시후','오승헌','유재영','유지훈','이재민','이태혁','정열','정원영','최성원','한승민','허규현','허재온','황지후']}]},
+  {num:'6호차', team:'C', cls:'2반', teachers:['박경호 ⭐','최은정'], students:19, total:21, color:'#059669', note:'',
+    members:[{label:'2반 (19명)', names:['공대훈','구건우','김문찬','김민건','김지헌','신상명','은지민','이민제','이서진','이승훈','이정재','이창민','이해인','이현탁','장승민','정우성','조현준','최성민','추헌욱']}]},
+  {num:'7호차', team:'C', cls:'6반', teachers:['배은혜','김진규'], students:27, total:29, color:'#059669', note:'',
+    members:[{label:'6반 (27명)', names:['김민성','김재현','김정환','김주혁','김지성','김택한','남재원','박민재','배수호','배종윤','백건렬','안준우','유효준','윤기범','윤유일','이예훈','이정우','이준호','이하진','임무겸','장찬희','정민석','정해영','조재음','최민재','허찬경','홍동훈']}]},
+  {num:'8호차', team:'C', cls:'7반', teachers:['김재인','최정원'], students:26, total:28, color:'#059669', note:'',
+    members:[{label:'7반 (26명)', names:['김도현','김성현','김시우','김시후','김영현','김정헌','김지환','김진우','김채환','도대오','류재선','문성빈','박윤호','심준보','우창민','유효준','이동근','이승윤','임동혁','장문익','장민준','장하율','전유성','차현민','천영훈','홍지훈']}]},
+  {num:'9호차', team:'D', cls:'3반', teachers:['정득진','김문섭'], students:26, total:28, color:'#dc2626', note:'',
+    members:[{label:'3반 (26명)', names:['강민성','곽태호','김경빈','김민찬','김법경','김수찬','김승건','김지훈','박주형','손하진','우민우','윤지성','이일준','이재인','이정환','이정훈','이지환','이진혁','임승빈','장우영','정효찬','조성규','최도빈','최은총','허선우','홍재용']}]},
+  {num:'10호차', team:'D', cls:'8반', teachers:['최미연','윤성원'], students:28, total:30, color:'#dc2626', note:'',
+    members:[{label:'8반 (28명)', names:['구건우','권덕원','권순재','김건우','김동현','김연우','김우진','김주원','김준희','나겸','도준수','박민준','박민찬','박종찬','박지후','박찬혁','서윤수','석민규','오현우','유진우','이경민','이여준','이윤건','이주환','전영우','정영훈','지준영','최연철']}]},
+];
+
+const contactsData = {
+  '1진': [
+    {name:'전은영', role:'1반 담임·1진 인솔', phone:'010-5490-8299'},
+    {name:'김나영', role:'4반 담임·중증학생 인솔', phone:'010-7362-5700'},
+    {name:'김효정', role:'특수학급 담임·중증학생 인솔', phone:'010-9862-7779'},
+    {name:'김병진', role:'5반 담임', phone:'010-6660-5937'},
+    {name:'이해선', role:'비담임 지도교사', phone:'010-4811-2483'},
+    {name:'박명진', role:'9반 담임', phone:'010-5721-0667'},
+    {name:'김지은 ⭐', role:'학년부장 · 1진 대표 · 10반 담임', phone:'010-7127-0583'},
+    {name:'김주상', role:'비담임 지도교사', phone:'010-2509-0552'},
+    {name:'하지연', role:'비담임 지도교사', phone:'010-6864-1003'},
+  ],
+  '2진': [
+    {name:'박경호 ⭐', role:'2진 대표 · 2반 담임', phone:'010-2899-6028'},
+    {name:'정득진', role:'3반 담임', phone:'010-4383-0032'},
+    {name:'배은혜', role:'6반 담임', phone:'010-6434-6617'},
+    {name:'김문섭', role:'비담임 지도교사', phone:'010-5149-4938'},
+    {name:'김재인', role:'7반 담임', phone:'010-8974-7177'},
+    {name:'최정원', role:'비담임 지도교사', phone:'010-8954-8441'},
+    {name:'최미연', role:'8반 담임', phone:'010-2528-4213'},
+    {name:'윤성원', role:'비담임 지도교사', phone:'010-4696-2966'},
+    {name:'최은정', role:'비담임 지도교사', phone:'010-5706-2195'},
+    {name:'김진규', role:'비담임 지도교사', phone:'010-9522-2134'},
+  ]
+};
+
+const scheduleData = {
+  A: {
+    1: [
+      {time:'09:50', act:'🏫 학교 출발'},
+      {time:'11:20', act:'✈️ 김해공항 도착'},
+      {time:'11:20', act:'🍱 중식 (자유식 · 김해공항 내)'},
+      {time:'13:40', act:'✈️ 김해공항 출발 (LJ565)'},
+      {time:'14:40', act:'🛬 제주공항 도착'},
+      {time:'15:10', act:'🚌 제주공항 출발'},
+      {time:'16:10', act:'🕊️ 4.3 평화공원'},
+      {time:'17:10', act:'🚌 이동'},
+      {time:'18:10', act:'🏨 숙소 도착'},
+      {time:'18:10', act:'🍽️ 석식 (숙소식)'},
+    ],
+    2: [
+      {time:'08:30', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:00', act:'🌊 주상절리'},
+      {time:'10:00', act:'🚌 이동'},
+      {time:'10:30', act:'🌊 용머리해안'},
+      {time:'11:30', act:'🚌 이동'},
+      {time:'12:00', act:'🍱 중식 (면공장)'},
+      {time:'12:50', act:'🚌 이동'},
+      {time:'13:20', act:'💻 넥슨컴퓨터박물관'},
+      {time:'14:20', act:'🚌 이동'},
+      {time:'14:50', act:'🐴 이호테우해변'},
+      {time:'15:50', act:'🚌 이동'},
+      {time:'16:30', act:'🎢 9.81파크'},
+      {time:'19:30', act:'🚌 이동'},
+    ],
+    3: [
+      {time:'08:00', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:00', act:'🌋 거문오름'},
+      {time:'10:00', act:'🚌 이동'},
+      {time:'10:30', act:'🎮 다이나믹메이즈'},
+      {time:'12:00', act:'🚌 이동'},
+      {time:'12:20', act:'🍱 중식 (가미정)'},
+      {time:'13:20', act:'🚌 이동'},
+      {time:'13:50', act:'🌋 성산일출봉'},
+      {time:'14:50', act:'🚌 이동'},
+      {time:'15:10', act:'🌿 섭지코지'},
+      {time:'16:00', act:'🚌 이동'},
+      {time:'17:00', act:'🛒 올레시장'},
+      {time:'18:00', act:'🚌 이동'},
+      {time:'18:20', act:'🏨 숙소 도착'},
+      {time:'18:20', act:'🍽️ 석식 (숙소식)'},
+      {time:'20:00', act:'🎉 레크리에이션 (샤모니리조트 내 강당)'},
+    ],
+    4: [
+      {time:'08:00', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:10', act:'🛒 동문시장'},
+      {time:'10:20', act:'🚌 이동'},
+      {time:'10:40', act:'🍱 중식 (이레)'},
+      {time:'11:30', act:'🚌 이동'},
+      {time:'11:50', act:'✈️ 제주공항 도착'},
+      {time:'13:00', act:'✈️ 제주공항 출발 (LJ562)'},
+      {time:'14:00', act:'🛬 김해공항 도착'},
+      {time:'14:30', act:'🚌 학교로 출발'},
+      {time:'16:00', act:'🏫 학교 도착 및 해산'},
+    ],
+  },
+  B: {
+    1: [
+      {time:'09:50', act:'🏫 학교 출발'},
+      {time:'11:20', act:'✈️ 김해공항 도착'},
+      {time:'11:20', act:'🍱 중식 (자유식 · 김해공항 내)'},
+      {time:'13:40', act:'✈️ 김해공항 출발 (LJ565)'},
+      {time:'14:40', act:'🛬 제주공항 도착'},
+      {time:'15:10', act:'🚌 제주공항 출발'},
+      {time:'16:10', act:'🕊️ 4.3 평화공원'},
+      {time:'17:10', act:'🚌 이동'},
+      {time:'18:10', act:'🏨 숙소 도착'},
+      {time:'18:10', act:'🍽️ 석식 (숙소식)'},
+    ],
+    2: [
+      {time:'08:30', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:00', act:'🌊 주상절리'},
+      {time:'10:00', act:'🚌 이동'},
+      {time:'10:30', act:'🌊 용머리해안'},
+      {time:'11:30', act:'🚌 이동'},
+      {time:'12:00', act:'🍱 중식 (면공장)'},
+      {time:'12:50', act:'🚌 이동'},
+      {time:'13:20', act:'💻 넥슨컴퓨터박물관'},
+      {time:'14:20', act:'🚌 이동'},
+      {time:'14:50', act:'🐴 이호테우해변'},
+      {time:'15:50', act:'🚌 이동'},
+      {time:'16:30', act:'🎢 9.81파크'},
+      {time:'19:30', act:'🚌 이동'},
+    ],
+    3: [
+      {time:'08:00', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:00', act:'🌋 거문오름'},
+      {time:'10:00', act:'🚌 이동'},
+      {time:'10:30', act:'🎮 다이나믹메이즈'},
+      {time:'12:00', act:'🚌 이동'},
+      {time:'12:20', act:'🍱 중식 (가미정)'},
+      {time:'13:20', act:'🚌 이동'},
+      {time:'13:50', act:'🌋 성산일출봉'},
+      {time:'14:50', act:'🚌 이동'},
+      {time:'15:10', act:'🌿 섭지코지'},
+      {time:'16:00', act:'🚌 이동'},
+      {time:'17:00', act:'🛒 올레시장'},
+      {time:'18:00', act:'🚌 이동'},
+      {time:'18:20', act:'🏨 숙소 도착'},
+      {time:'18:20', act:'🍽️ 석식 (숙소식)'},
+      {time:'20:00', act:'🎉 레크리에이션 (샤모니리조트 내 강당)'},
+    ],
+    4: [
+      {time:'08:00', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:10', act:'🛒 동문시장'},
+      {time:'10:20', act:'🚌 이동'},
+      {time:'10:40', act:'🍱 중식 (이레)'},
+      {time:'11:30', act:'🚌 이동'},
+      {time:'11:50', act:'✈️ 제주공항 도착'},
+      {time:'13:00', act:'✈️ 제주공항 출발 (LJ562)'},
+      {time:'14:00', act:'🛬 김해공항 도착'},
+      {time:'14:30', act:'🚌 학교로 출발'},
+      {time:'16:00', act:'🏫 학교 도착 및 해산'},
+    ],
+  },
+  C: {
+    1: [
+      {time:'09:50', act:'🏫 학교 출발'},
+      {time:'11:40', act:'🦅 을숙도 생태문화공원'},
+      {time:'12:40', act:'🚌 이동'},
+      {time:'13:00', act:'✈️ 김해공항 도착'},
+      {time:'13:00', act:'🍱 중식 (자유식 · 김해공항 내)'},
+      {time:'15:00', act:'✈️ 김해공항 출발 (LJ567)'},
+      {time:'16:00', act:'🛬 제주공항 도착'},
+      {time:'16:30', act:'🚌 제주공항 출발'},
+      {time:'17:00', act:'🐴 이호테우해변'},
+      {time:'18:00', act:'🚌 이동'},
+      {time:'19:00', act:'🏨 숙소 도착'},
+      {time:'19:00', act:'🍽️ 석식 (숙소식)'},
+    ],
+    2: [
+      {time:'08:40', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:10', act:'🌊 주상절리'},
+      {time:'10:10', act:'🚌 이동'},
+      {time:'10:40', act:'🌊 용머리해안'},
+      {time:'11:30', act:'🚌 이동'},
+      {time:'12:00', act:'🍱 중식 (면공장)'},
+      {time:'13:30', act:'🚌 이동'},
+      {time:'14:10', act:'🌿 한라수목원'},
+      {time:'15:10', act:'🚌 이동'},
+      {time:'15:30', act:'💻 넥슨컴퓨터박물관'},
+      {time:'16:30', act:'🚌 이동'},
+      {time:'17:10', act:'🎢 9.81파크'},
+      {time:'19:40', act:'🚌 이동'},
+    ],
+    3: [
+      {time:'08:00', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:00', act:'🌋 거문오름'},
+      {time:'10:00', act:'🚌 이동'},
+      {time:'10:30', act:'🎮 다이나믹메이즈'},
+      {time:'12:00', act:'🚌 이동'},
+      {time:'12:20', act:'🍱 중식 (가미정)'},
+      {time:'13:20', act:'🚌 이동'},
+      {time:'13:50', act:'🌋 성산일출봉'},
+      {time:'14:50', act:'🚌 이동'},
+      {time:'15:10', act:'🌿 섭지코지'},
+      {time:'16:00', act:'🚌 이동'},
+      {time:'17:00', act:'🛒 올레시장'},
+      {time:'18:00', act:'🚌 이동'},
+      {time:'18:20', act:'🏨 숙소 도착'},
+      {time:'18:20', act:'🍽️ 석식 (숙소식)'},
+      {time:'20:00', act:'🎉 레크리에이션 (샤모니리조트 내 강당)'},
+    ],
+    4: [
+      {time:'08:20', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:30', act:'🕊️ 4.3 평화공원'},
+      {time:'10:30', act:'🚌 이동'},
+      {time:'11:00', act:'🛒 동문시장'},
+      {time:'12:30', act:'🚌 이동'},
+      {time:'12:50', act:'🍱 중식 (이레)'},
+      {time:'13:50', act:'🚌 이동'},
+      {time:'14:20', act:'✈️ 제주공항 도착'},
+      {time:'16:40', act:'✈️ 제주공항 출발 (LJ564)'},
+      {time:'17:40', act:'🛬 김해공항 도착'},
+      {time:'18:10', act:'🍽️ 석식 (다담뜰 · 양산)'},
+      {time:'19:40', act:'🚌 학교로 출발'},
+      {time:'21:00', act:'🏫 학교 도착 및 해산'},
+    ],
+  },
+  D: {
+    1: [
+      {time:'09:50', act:'🏫 학교 출발'},
+      {time:'11:40', act:'🦅 을숙도 생태문화공원'},
+      {time:'12:40', act:'🚌 이동'},
+      {time:'13:00', act:'✈️ 김해공항 도착'},
+      {time:'13:00', act:'🍱 중식 (자유식 · 김해공항 내)'},
+      {time:'15:00', act:'✈️ 김해공항 출발 (LJ567)'},
+      {time:'16:00', act:'🛬 제주공항 도착'},
+      {time:'16:30', act:'🚌 제주공항 출발'},
+      {time:'17:00', act:'🐴 이호테우해변'},
+      {time:'18:00', act:'🚌 이동'},
+      {time:'19:00', act:'🏨 숙소 도착'},
+      {time:'19:00', act:'🍽️ 석식 (숙소식)'},
+    ],
+    2: [
+      {time:'08:40', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:10', act:'🌊 주상절리'},
+      {time:'10:10', act:'🚌 이동'},
+      {time:'10:40', act:'🌊 용머리해안'},
+      {time:'11:30', act:'🚌 이동'},
+      {time:'12:00', act:'🍱 중식 (면공장)'},
+      {time:'13:30', act:'🚌 이동'},
+      {time:'14:10', act:'🌿 한라수목원'},
+      {time:'15:10', act:'🚌 이동'},
+      {time:'15:30', act:'💻 넥슨컴퓨터박물관'},
+      {time:'16:30', act:'🚌 이동'},
+      {time:'17:10', act:'🎢 9.81파크'},
+      {time:'19:40', act:'🚌 이동'},
+    ],
+    3: [
+      {time:'08:00', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:00', act:'🌋 거문오름'},
+      {time:'10:00', act:'🚌 이동'},
+      {time:'10:30', act:'🎮 다이나믹메이즈'},
+      {time:'12:00', act:'🚌 이동'},
+      {time:'12:20', act:'🍱 중식 (가미정)'},
+      {time:'13:20', act:'🚌 이동'},
+      {time:'13:50', act:'🌋 성산일출봉'},
+      {time:'14:50', act:'🚌 이동'},
+      {time:'15:10', act:'🌿 섭지코지'},
+      {time:'16:00', act:'🚌 이동'},
+      {time:'17:00', act:'🛒 올레시장'},
+      {time:'18:00', act:'🚌 이동'},
+      {time:'18:20', act:'🏨 숙소 도착'},
+      {time:'18:20', act:'🍽️ 석식 (숙소식)'},
+      {time:'20:00', act:'🎉 레크리에이션 (샤모니리조트 내 강당)'},
+    ],
+    4: [
+      {time:'08:20', act:'🍳 조식 (숙소식) 후 출발'},
+      {time:'09:30', act:'🕊️ 4.3 평화공원'},
+      {time:'10:30', act:'🚌 이동'},
+      {time:'11:00', act:'🛒 동문시장'},
+      {time:'12:30', act:'🚌 이동'},
+      {time:'12:50', act:'🍱 중식 (이레)'},
+      {time:'13:50', act:'🚌 이동'},
+      {time:'14:20', act:'✈️ 제주공항 도착'},
+      {time:'16:40', act:'✈️ 제주공항 출발 (LJ564)'},
+      {time:'17:40', act:'🛬 김해공항 도착'},
+      {time:'18:10', act:'🍽️ 석식 (다담뜰 · 양산)'},
+      {time:'19:40', act:'🚌 학교로 출발'},
+      {time:'21:00', act:'🏫 학교 도착 및 해산'},
+    ],
+  },
+};
+
+// Room assignments (6명 기준 방배정 - 반별)
+const roomData = [
+  {team:'B', room:'505', cls:'1반', leader:'박기성', members:['박기성','최빈']},
+  {team:'B', room:'506', cls:'1반', leader:'김윤재', members:['김윤재','원준서','이건우']},
+  {team:'B', room:'507', cls:'1반', leader:'권은찬', members:['권은찬','손영훈','이인호']},
+  {team:'B', room:'508', cls:'1반', leader:'정은찬', members:['박성훈','송은우','정은찬']},
+  {team:'B', room:'509', cls:'1반', leader:'오석현', members:['권민재','오석현','장민제']},
+  {team:'B', room:'510', cls:'1반', leader:'강서빈', members:['강서빈','김준성','정영훈']},
+  {team:'B', room:'511', cls:'1반', leader:'김지환', members:['김범수','김재경','김지환']},
+  {team:'C', room:'502', cls:'2반', leader:'', members:['김민건','김지헌','이해인']},
+  {team:'C', room:'503', cls:'2반', leader:'', members:['정우성','신상명','은지민']},
+  {team:'C', room:'504', cls:'2반', leader:'', members:['추헌욱','이창민','이현탁']},
+  {team:'C', room:'520', cls:'2반', leader:'', members:['김문찬','이서진','구건우']},
+  {team:'C', room:'521', cls:'2반', leader:'', members:['장승민','조현준','이승훈']},
+  {team:'C', room:'522', cls:'2반', leader:'', members:['공대훈','이민제','이정재']},
+  {team:'D', room:'512', cls:'3반', leader:'곽태호', members:['곽태호','김승건','장우영']},
+  {team:'D', room:'513', cls:'3반', leader:'김민찬', members:['김민찬','박주형','허선우']},
+  {team:'D', room:'514', cls:'3반', leader:'김법경', members:['김법경','이정훈','최은총']},
+  {team:'D', room:'515', cls:'3반', leader:'이진혁', members:['김경빈','우민우','이정환','이진혁']},
+  {team:'D', room:'516', cls:'3반', leader:'홍재용', members:['강민성','윤지성','홍재용']},
+  {team:'D', room:'517', cls:'3반', leader:'이일준', members:['이일준','임승빈','조성규']},
+  {team:'D', room:'518', cls:'3반', leader:'김수찬', members:['김수찬','손하진','최도빈']},
+  {team:'D', room:'519', cls:'3반', leader:'정효찬', members:['김지훈','이재인','정효찬']},
+  {team:'B', room:'605', cls:'4반', leader:'변경민', members:['김민서','배준호','변경민']},
+  {team:'B', room:'606', cls:'4반', leader:'우승범', members:['권경호','김동휘','우승범']},
+  {team:'B', room:'607', cls:'4반', leader:'한승민', members:['김은수','정찬휘','한승민']},
+  {team:'B', room:'608', cls:'4반', leader:'노승민', members:['김동완','노승민','조현범']},
+  {team:'B', room:'609', cls:'4반', leader:'백부겸', members:['김태영','백부겸','박주현']},
+  {team:'B', room:'610', cls:'4반', leader:'이예승', members:['윤정우','이예승','이원우']},
+  {team:'B', room:'611', cls:'4반', leader:'이경욱', members:['김주영','이경욱','이효건']},
+  {team:'B', room:'612', cls:'5반', leader:'오승헌', members:['오승헌','김성욱','신진우']},
+  {team:'B', room:'613', cls:'5반', leader:'황지후', members:['황지후','정열','손민제']},
+  {team:'B', room:'614', cls:'5반', leader:'박서형', members:['정원영','김규현','박서형']},
+  {team:'B', room:'615', cls:'5반', leader:'허규현', members:['김민서','박민서','유재영','허규현']},
+  {team:'B', room:'616', cls:'5반', leader:'한승민', members:['한승민','강민제','이재민']},
+  {team:'B', room:'617', cls:'5반', leader:'허재온', members:['안시후','허재온','이태혁']},
+  {team:'B', room:'618', cls:'5반', leader:'유지훈', members:['남유성','유지훈','최성원']},
+  {team:'C', room:'601', cls:'6반', leader:'이하진', members:['김민성','윤유일','이하진','장찬희']},
+  {team:'C', room:'602', cls:'6반', leader:'임무겸', members:['박민재','이준호','임무겸']},
+  {team:'C', room:'603', cls:'6반', leader:'김정환', members:['김정환','유효준','윤기범']},
+  {team:'C', room:'604', cls:'6반', leader:'조재음', members:['이정우','조재음','홍동훈']},
+  {team:'C', room:'620', cls:'6반', leader:'이예훈', members:['김지성','배수호','이예훈']},
+  {team:'C', room:'621', cls:'6반', leader:'정민석', members:['남재원','정민석','최민재']},
+  {team:'C', room:'622', cls:'6반', leader:'배종윤', members:['김재현','배종윤','허찬경']},
+  {team:'C', room:'710', cls:'6반', leader:'김주혁', members:['김주혁','김택한']},
+  {team:'C', room:'711', cls:'6반', leader:'안준우', members:['안준우','정해영']},
+  {team:'C', room:'712', cls:'7반', leader:'류재선', members:['김시후','류재선','심준보']},
+  {team:'C', room:'713', cls:'7반', leader:'김지환', members:['김영현','김지환','김채환']},
+  {team:'C', room:'714', cls:'7반', leader:'문성빈', members:['김진우','문성빈','우창민']},
+  {team:'C', room:'715', cls:'7반', leader:'천영훈', members:['이동근','장문익','전유성','천영훈']},
+  {team:'C', room:'716', cls:'7반', leader:'김성현', members:['김도현','김성현','김정헌']},
+  {team:'C', room:'717', cls:'7반', leader:'장민준', members:['장민준','장하율','차현민']},
+  {team:'C', room:'718', cls:'7반', leader:'김시우', members:['김시우','도대오','박윤호']},
+  {team:'C', room:'719', cls:'7반', leader:'유효준', members:['유효준','이승윤','홍지훈']},
+  {team:'D', room:'701', cls:'8반', leader:'박종찬', members:['김주원','박종찬','유진우','최연철']},
+  {team:'D', room:'702', cls:'8반', leader:'이여준', members:['이여준','이주환','전영훈']},
+  {team:'D', room:'703', cls:'8반', leader:'나겸', members:['김건우','나겸','이윤건']},
+  {team:'D', room:'704', cls:'8반', leader:'도준수', members:['권덕원','도준수','박찬혁']},
+  {team:'D', room:'705', cls:'8반', leader:'김우진', members:['구건우','김우진','이경민']},
+  {team:'D', room:'706', cls:'8반', leader:'박민찬', members:['박민찬','서윤수','전영우']},
+  {team:'D', room:'707', cls:'8반', leader:'박민준', members:['김준희','박민준','석민규']},
+  {team:'D', room:'708', cls:'8반', leader:'김연우', members:['김연우','박지후','오현우']},
+  {team:'D', room:'709', cls:'8반', leader:'김동현', members:['권순재','김동현','지준영']},
+  {team:'A', room:'805', cls:'9반', leader:'천승원', members:['김성윤','천승원','최성민']},
+  {team:'A', room:'806', cls:'9반', leader:'김관명', members:['김관명','김지환','남우영']},
+  {team:'A', room:'807', cls:'9반', leader:'김준', members:['강민석','김준','김형준']},
+  {team:'A', room:'808', cls:'9반', leader:'이유승', members:['원동건','이유승','최현우']},
+  {team:'A', room:'809', cls:'9반', leader:'김민성', members:['김건우','김민성','지이찬']},
+  {team:'A', room:'810', cls:'9반', leader:'염정운', members:['염정운','이근욱','허성준']},
+  {team:'A', room:'811', cls:'9반', leader:'신유철', members:['김기태','김재혁','신유철']},
+  {team:'A', room:'819', cls:'9반', leader:'최성현', members:['문주호','정재호','최성현']},
+  {team:'A', room:'820', cls:'9반', leader:'이준서', members:['백승우','이준서']},
+  {team:'A', room:'801', cls:'10반', leader:'전부겸', members:['전부겸','박기륜','홍준서','이찬유']},
+  {team:'A', room:'802', cls:'10반', leader:'김도영', members:['김도영','신재민','신지후']},
+  {team:'A', room:'803', cls:'10반', leader:'지현우', members:['지현우','양현진','김범준']},
+  {team:'A', room:'804', cls:'10반', leader:'심세윤', members:['심세윤','허태웅','정민수']},
+  {team:'A', room:'815', cls:'10반', leader:'문정민', members:['문정민','윤승현','한지후']},
+  {team:'A', room:'816', cls:'10반', leader:'강현서', members:['강현서','박태현','이도윤']},
+  {team:'A', room:'817', cls:'10반', leader:'이석현', members:['이석현','김도완','박준영']},
+  {team:'A', room:'818', cls:'10반', leader:'서승완', members:['서승완','노기범','정주현']},
+  {team:'B', room:'822', cls:'도움반', leader:'', members:['권동원','김도운','박민석','최승배']},
+];
+
+// ========== RENDER ==========
+let currentDay = 1;
+let currentTeam = 'A';
+let currentRoomFilter = 'all';
+
+
+const teacherData = [
+  {cls:'교감', name:'한수용', role:'전체 총괄', jin:'1진'},
+  {cls:'1반', name:'전은영', role:'담임·1진', jin:'1진'},
+  {cls:'4반', name:'김나영', role:'담임·1진', jin:'1진'},
+  {cls:'4반', name:'김효정', role:'특수학급·중증인솔', jin:'1진'},
+  {cls:'5반', name:'김병진', role:'담임·1진', jin:'1진'},
+  {cls:'5반', name:'이해선', role:'비담임·1진', jin:'1진'},
+  {cls:'9반', name:'박명진', role:'담임·1진', jin:'1진'},
+  {cls:'9반', name:'하지연', role:'비담임·1진', jin:'1진'},
+  {cls:'10반', name:'김지은', role:'학년부장·1진 대표', jin:'1진'},
+  {cls:'10반', name:'김주상', role:'비담임·1진', jin:'1진'},
+  {cls:'2반', name:'박경호', role:'2진 대표·담임', jin:'2진'},
+  {cls:'3반', name:'정득진', role:'담임·2진', jin:'2진'},
+  {cls:'6반', name:'배은혜', role:'담임·2진', jin:'2진'},
+  {cls:'6반', name:'김문섭', role:'비담임·2진', jin:'2진'},
+  {cls:'7반', name:'김재인', role:'담임·2진', jin:'2진'},
+  {cls:'7반', name:'최정원', role:'비담임·2진', jin:'2진'},
+  {cls:'8반', name:'최미연', role:'담임·2진', jin:'2진'},
+  {cls:'8반', name:'윤성원', role:'비담임·2진', jin:'2진'},
+  {cls:'행정', name:'최은정', role:'비담임·2진', jin:'2진'},
+  {cls:'행정', name:'김진규', role:'비담임·2진', jin:'2진'},
+];
+
+let currentStudentFilter = 'all';
+
+function filterStudents(filter) {
+  currentStudentFilter = filter;
+  // 칩 버튼 활성화
+  ['all','teacher','1jin','2jin'].forEach(f => {
+    const el = document.getElementById('chip-' + f);
+    if (!el) return;
+    if (f === filter) {
+      el.classList.add('active-chip');
+      el.style.background = 'var(--jeju-sky)';
+      el.style.color = 'white';
+      el.style.borderColor = 'var(--jeju-sky)';
+    } else {
+      el.classList.remove('active-chip');
+      el.style.background = 'white';
+      el.style.color = 'var(--jeju-deep)';
+      el.style.borderColor = 'var(--jeju-sky)';
+    }
+  });
+  renderStudents();
+}
+
+function renderStudents() {
+  const container = document.getElementById('studentList');
+  let html = '';
+
+  if (currentStudentFilter === 'teacher') {
+    // 교직원 목록
+    const jin1 = teacherData.filter(t => t.jin === '1진');
+    const jin2 = teacherData.filter(t => t.jin === '2진');
+    const makeTeacherGrid = (list) => list.map(t => `
+      <div class="student-item" style="text-align:left;padding:8px 10px;">
+        <span class="student-num">${t.cls}</span>
+        <span style="font-weight:700;">${t.name}</span>
+        <span style="display:block;font-size:10px;color:var(--gray-600);margin-top:1px;">${t.role}</span>
+      </div>`).join('');
+    html += `
+      <div class="class-section">
+        <div class="class-header">
+          <span>🚌 1진 인솔교사 (1·4·5·9·10반)</span>
+          <span class="class-count">${jin1.length}명</span>
+        </div>
+        <div class="student-grid">${makeTeacherGrid(jin1)}</div>
+      </div>
+      <div class="class-section">
+        <div class="class-header" style="background:linear-gradient(90deg,#059669,#34d399);">
+          <span>🚌 2진 인솔교사 (2·3·6·7·8반)</span>
+          <span class="class-count">${jin2.length}명</span>
+        </div>
+        <div class="student-grid">${makeTeacherGrid(jin2)}</div>
+      </div>`;
+  } else {
+    // 학생 목록 (전체 / 1진 / 2진 필터)
+    const jinFilter = {'all': null, '1jin': '1진', '2jin': '2진'};
+    const targetJin = jinFilter[currentStudentFilter];
+    Object.entries(classData).forEach(([cls, data]) => {
+      if (targetJin && data.jin !== targetJin) return;
+      html += `<div class="class-section">
+        <div class="class-header">
+          <span>📚 ${cls} (${data.team}팀 · ${data.jin}) · 담임: ${data.teacher}</span>
+          <span class="class-count">${data.students.length}명 참가</span>
+        </div>
+        <div class="student-grid">
+          ${data.students.map(s => `
+            <div class="student-item">
+              <span class="student-num">${s.no}</span>
+              <span>${s.name}</span>
+              ${s.note === '도움' ? '<span class="badge-help">도움</span>' : ''}
+            </div>`).join('')}
+        </div>
+      </div>`;
+    });
+  }
+  container.innerHTML = html;
+}
+
+function renderContacts() {
+  ['1진','2진'].forEach(jin => {
+    const id = jin === '1진' ? 'contacts1jin' : 'contacts2jin';
+    const container = document.getElementById(id);
+    const colors = ['#dbeafe','#dcfce7','#fef3c7','#fce7f3','#f3e8ff'];
+    const emojis = ['👨‍🏫','👩‍🏫','🧑‍🏫'];
+    let html = contactsData[jin].map((c,i) => {
+    const name = c.name.replace(' ⭐','').replace('⭐','').trim();
+    const showCall = name === '김지은' || name === '박경호';
+    return `
+      <div class="contact-row">
+        <div class="contact-avatar" style="background:${colors[i%colors.length]}; font-size:18px;">${emojis[i%3]}</div>
+        <div class="contact-info">
+          <div class="contact-name">${c.name}</div>
+          <div class="contact-role">${c.role}</div>
+        </div>
+        ${showCall ? `<a class="call-btn" href="tel:${c.phone}">📞 전화</a>` : ''}
+      </div>`;
+  }).join('');
+    container.innerHTML = html;
+  });
+}
+
+let currentBusType = 'airport';
+
+function renderBus() {
+  const container = document.getElementById('busCards');
+  const data = currentBusType === 'airport' ? busAirportData : busJejuData;
+  const teamColors = {A:'#0077b6', B:'#7c3aed', C:'#059669', D:'#dc2626'};
+  let html = data.map(b => {
+    const membersHtml = (b.members && b.members.length) ? `
+      <div style="padding:10px 14px;border-top:1px solid var(--gray-100);">
+        ${b.members.map(g => `
+          <div style="margin-bottom:8px;">
+            <div style="font-size:11px;font-weight:700;color:var(--jeju-sky);margin-bottom:5px;">${g.label}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;">
+              ${g.names.map(n => `<span style="background:var(--gray-100);border-radius:6px;padding:3px 8px;font-size:12px;">${n}</span>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>` : '';
+    return `
+    <div class="bus-card">
+      <div class="bus-header">
+        <div class="bus-num" style="background:${teamColors[b.team]};">${b.num.replace('호차','')}</div>
+        <div class="bus-info">
+          <div class="bus-label">${b.num} · ${b.team}팀 · ${b.cls}</div>
+          <div class="bus-meta">학생 ${b.students}명 + 교직원 = 총 ${b.total}명</div>
+          ${b.note ? `<div class="bus-meta" style="color:var(--accent);font-size:11px;margin-top:2px;">📌 ${b.note}</div>` : ''}
+        </div>
+        <div style="background:${teamColors[b.team]};color:white;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:700;">${b.team}팀</div>
+      </div>
+      <div class="bus-teachers">
+        인솔교사:
+        ${b.teachers.map(t=>`<span class="teacher-tag">👨‍🏫 ${t}</span>`).join('')}
+      </div>
+      ${membersHtml}
+    </div>`;
+  }).join('');
+  container.innerHTML = html;
+}
+
+function renderSchedule() {
+  const container = document.getElementById('scheduleDisplay');
+  const data = scheduleData[currentTeam][currentDay];
+  if (!data) return;
+  const items = data.map(item => `
+    <div class="schedule-item">
+      <div class="sched-time">${item.time}</div>
+      <div class="sched-dot"></div>
+      <div class="sched-act">${item.act}</div>
+    </div>`).join('');
+  container.innerHTML = `<div class="card">${items}</div>`;
+}
+
+function renderRooms(filter) {
+  const container = document.getElementById('roomList');
+  const filtered = filter === 'all' ? roomData : roomData.filter(r => r.team === filter);
+  const grouped = {};
+  filtered.forEach(r => {
+    const key = r.team;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(r);
+  });
+
+  let html = '';
+  const teamColors = {A:'#0077b6', B:'#7c3aed', C:'#059669', D:'#dc2626'};
+  const teamLabel = {A:'A팀 (9·10반)', B:'B팀 (1·4·5반)', C:'C팀 (2·6·7반)', D:'D팀 (3·8반)'};
+  Object.entries(grouped).forEach(([team, rooms]) => {
+    // cls별 소그룹
+    const byClass = {};
+    rooms.forEach(r => {
+      if (!byClass[r.cls]) byClass[r.cls] = [];
+      byClass[r.cls].push(r);
+    });
+    html += `<div class="room-section">
+      <div class="room-header" style="background:linear-gradient(90deg,${teamColors[team]},${teamColors[team]}99);">
+        <span>${teamLabel[team]}</span>
+        <span>${rooms.reduce((a,r)=>a+r.members.length,0)}명</span>
+      </div>`;
+    Object.entries(byClass).forEach(([cls, clsRooms]) => {
+      html += `<div style="padding:6px 10px 2px;font-size:11px;font-weight:700;color:${teamColors[team]};background:#f8fafc;">📚 ${cls} (${clsRooms.reduce((a,r)=>a+r.members.length,0)}명)</div>
+      <div class="room-grid">
+        ${clsRooms.map(r => `
+          <div class="room-box">
+            <div class="room-num" style="background:${teamColors[team]};">${r.room}호</div>
+            <div class="room-members">
+              ${r.members.map(m => `
+                <div class="room-member" id="rm-${m}">
+                  ${m === r.leader ? '<span class="crown">👑</span>' : ''}
+                  <span>${m}</span>
+                </div>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  container.innerHTML = html;
+}
+
+function searchRoom(val) {
+  const result = document.getElementById('searchResult');
+  const q = val.trim();
+  if (!q) { result.style.display='none'; return; }
+  let found = null;
+  for (const room of roomData) {
+    for (const m of room.members) {
+      if (m.includes(q)) {
+        found = { name: m, room: room.room, team: room.team, isLeader: m === room.leader };
+        break;
+      }
+    }
+    if (found) break;
+  }
+  if (found) {
+    result.style.display = 'block';
+    result.innerHTML = `
+      <div class="result-name">${found.name} ${found.isLeader ? '👑' : ''}</div>
+      <div class="result-detail">배정 객실: <b>${found.room}</b> · ${found.team}팀</div>`;
+    // highlight
+    document.querySelectorAll('.room-member').forEach(el => el.classList.remove('highlight'));
+    const target = document.getElementById(`rm-${found.name}`);
+    if (target) target.querySelector('span:last-child').classList.add('highlight');
+  } else {
+    result.style.display = 'block';
+    result.innerHTML = `<div class="result-detail" style="color:#dc2626;">🔍 "${q}" 검색 결과가 없습니다.</div>`;
+  }
+}
+
+function switchBus(type) {
+  currentBusType = type;
+  document.querySelectorAll('.bus-type-btn').forEach(el => {
+    const isActive = el.dataset.type === type;
+    el.style.background = isActive ? 'var(--jeju-sky)' : 'white';
+    el.style.color = isActive ? 'white' : 'var(--gray-600)';
+    el.style.borderColor = isActive ? 'var(--jeju-sky)' : 'var(--gray-200)';
+  });
+  const notice = document.getElementById('busNotice');
+  notice.textContent = type === 'airport'
+    ? '🚌 5반 → 1·4반 버스 분승 / 2반 → 6·7반 버스 분승'
+    : '🌴 반별 전용 버스 운영 (10대) · 팀별 이동 일정에 따라 운행';
+  renderBus();
+}
+
+// ========== TAB CONTROL ==========
+function showTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function showDay(day) {
+  currentDay = day;
+  document.querySelectorAll('.day-btn').forEach((el,i) => el.classList.toggle('active', i===day-1));
+  renderSchedule();
+}
+
+function showTeam(team) {
+  currentTeam = team;
+  document.querySelectorAll('.team-btn').forEach(el => el.classList.toggle('active', el.textContent.startsWith(team+'팀')));
+  renderSchedule();
+}
+
+function filterRooms(filter) {
+  currentRoomFilter = filter;
+  document.querySelectorAll('.tf-btn').forEach(el => el.classList.toggle('active', el.textContent === (filter==='all'?'전체':filter+'팀')));
+  renderRooms(filter);
+}
+
+
+// ========== 숙소 배치도 ==========
+const floorData = {
+  '5': {
+    desc: '오션뷰(1·2·3반) + 마운틴뷰(1반)',
+    sections: [
+      { label: '🌊 오션뷰 (북쪽 복도)', rooms: [
+        {num:'511',cls:'1반',type:'3인남'},{num:'510',cls:'1반',type:'3인남'},{num:'509',cls:'1반',type:'3인남'},
+        {num:'508',cls:'1반',type:'3인남'},{num:'507',cls:'1반',type:'3인남'},{num:'506',cls:'1반',type:'3인남'},
+        {num:'505',cls:'1반',type:'2인남'},
+      ]},
+      { label: '🌊 오션뷰 (남쪽 복도)', rooms: [
+        {num:'504',cls:'2반',type:'3인남'},{num:'503',cls:'2반',type:'3인남'},
+        {num:'502',cls:'2반',type:'3인남'},{num:'501',cls:'교사',type:'1명'},
+      ]},
+      { label: '🌆 시티뷰 (서쪽)', rooms: [
+        {num:'512',cls:'3반',type:'3인남'},{num:'513',cls:'3반',type:'3인남'},
+        {num:'514',cls:'3반',type:'3인남'},{num:'515',cls:'3반',type:'4인남'},
+      ]},
+      { label: '⛰️ 마운틴뷰', rooms: [
+        {num:'516',cls:'1반',type:'3인남'},{num:'517',cls:'1반',type:'3인남'},{num:'518',cls:'1반',type:'3인남'},
+        {num:'519',cls:'1반',type:'3인남'},{num:'520',cls:'1반',type:'3인남'},{num:'521',cls:'1반',type:'3인남'},
+        {num:'522',cls:'1반',type:'3인남'},
+      ]},
+    ]
+  },
+  '6': {
+    desc: '오션뷰(4·5·6반) + 마운틴뷰(4반)',
+    sections: [
+      { label: '🌊 오션뷰 (북쪽 복도)', rooms: [
+        {num:'611',cls:'4반',type:'3인남'},{num:'610',cls:'4반',type:'3인남'},{num:'609',cls:'4반',type:'3인남'},
+        {num:'608',cls:'4반',type:'3인남'},{num:'607',cls:'4반',type:'3인남'},{num:'606',cls:'4반',type:'3인남'},
+        {num:'605',cls:'4반',type:'3인남'},
+      ]},
+      { label: '🌊 오션뷰 (남쪽 복도)', rooms: [
+        {num:'604',cls:'6반',type:'3인남'},{num:'603',cls:'6반',type:'3인남'},
+        {num:'602',cls:'6반',type:'3인남'},{num:'601',cls:'6반',type:'4인남'},
+      ]},
+      { label: '🌆 시티뷰 (서쪽)', rooms: [
+        {num:'612',cls:'5반',type:'3인남'},{num:'613',cls:'5반',type:'3인남'},
+        {num:'614',cls:'5반',type:'3인남'},{num:'615',cls:'5반',type:'4인남'},
+        {num:'619',cls:'교사',type:'1명'},
+      ]},
+      { label: '⛰️ 마운틴뷰', rooms: [
+        {num:'616',cls:'4반',type:'3인남'},{num:'617',cls:'4반',type:'3인남'},{num:'618',cls:'4반',type:'3인남'},
+        {num:'620',cls:'4반',type:'3인남'},{num:'621',cls:'4반',type:'3인남'},{num:'622',cls:'4반',type:'3인남'},
+      ]},
+    ]
+  },
+  '7': {
+    desc: '오션뷰(6·7·8반) + 마운틴뷰(7반)',
+    sections: [
+      { label: '🌊 오션뷰 (북쪽 복도)', rooms: [
+        {num:'711',cls:'6반',type:'2인남'},{num:'710',cls:'6반',type:'2인남'},{num:'709',cls:'8반',type:'3인남'},
+        {num:'708',cls:'8반',type:'3인남'},{num:'707',cls:'8반',type:'3인남'},{num:'706',cls:'8반',type:'3인남'},
+        {num:'705',cls:'8반',type:'3인남'},
+      ]},
+      { label: '🌊 오션뷰 (남쪽 복도)', rooms: [
+        {num:'704',cls:'7반',type:'3인남'},{num:'703',cls:'7반',type:'3인남'},
+        {num:'702',cls:'7반',type:'3인남'},{num:'701',cls:'7반',type:'4인남'},
+      ]},
+      { label: '🌆 시티뷰 (서쪽)', rooms: [
+        {num:'712',cls:'7반',type:'3인남'},{num:'713',cls:'7반',type:'3인남'},
+        {num:'714',cls:'7반',type:'3인남'},{num:'715',cls:'7반',type:'4인남'},
+      ]},
+      { label: '⛰️ 마운틴뷰', rooms: [
+        {num:'716',cls:'7반',type:'3인남'},{num:'717',cls:'7반',type:'3인남'},{num:'718',cls:'7반',type:'3인남'},
+        {num:'719',cls:'7반',type:'3인남'},
+        {num:'720',cls:'교사',type:'1명'},{num:'721',cls:'교사',type:'1명'},{num:'722',cls:'교사',type:'1명'},
+      ]},
+    ]
+  },
+  '8': {
+    desc: '오션뷰(9·10반) + 마운틴뷰(9반)',
+    sections: [
+      { label: '🌊 오션뷰 (북쪽 복도)', rooms: [
+        {num:'811',cls:'9반',type:'3인남'},{num:'810',cls:'9반',type:'3인남'},{num:'809',cls:'9반',type:'3인남'},
+        {num:'808',cls:'9반',type:'3인남'},{num:'807',cls:'9반',type:'3인남'},{num:'806',cls:'9반',type:'3인남'},
+        {num:'805',cls:'9반',type:'3인남'},
+      ]},
+      { label: '🌊 오션뷰 (남쪽 복도)', rooms: [
+        {num:'804',cls:'10반',type:'3인남'},{num:'803',cls:'10반',type:'3인남'},
+        {num:'802',cls:'10반',type:'3인남'},{num:'801',cls:'10반',type:'4인남'},
+      ]},
+      { label: '🌆 시티뷰 (서쪽)', rooms: [
+        {num:'819',cls:'9반',type:'3인남'},{num:'820',cls:'9반',type:'2인남'},
+        {num:'821',cls:'교사',type:'1명'},{num:'822',cls:'도움반',type:'4명'},
+      ]},
+      { label: '⛰️ 마운틴뷰', rooms: [
+        {num:'812',cls:'교사',type:'1명'},{num:'813',cls:'교사',type:'1명'},{num:'814',cls:'교사',type:'1명'},
+        {num:'815',cls:'10반',type:'3인남'},{num:'816',cls:'10반',type:'3인남'},
+        {num:'817',cls:'10반',type:'3인남'},{num:'818',cls:'10반',type:'3인남'},
+      ]},
+    ]
+  },
+  '9': {
+    desc: '교사 전용층 (DFO룸 · Club Lounge)',
+    sections: [
+      { label: '🌊 오션뷰', rooms: [
+        {num:'905',cls:'교사',type:'1명'},{num:'906',cls:'교사',type:'1명'},{num:'907',cls:'교사',type:'1명'},
+        {num:'908',cls:'교사',type:'1명'},{num:'909',cls:'교사',type:'1명'},
+        {num:'915',cls:'교사',type:'1명'},{num:'916',cls:'교사',type:'1명'},
+      ]},
+      { label: '🌆 시티뷰', rooms: [
+        {num:'901',cls:'교사',type:'1명'},{num:'902',cls:'교사',type:'1명'},
+        {num:'903',cls:'교사',type:'1명'},{num:'904',cls:'교사',type:'1명'},
+      ]},
+      { label: '⛰️ 마운틴뷰', rooms: [
+        {num:'910',cls:'교사',type:'1명'},{num:'911',cls:'교사',type:'1명'},{num:'912',cls:'교사',type:'1명'},
+        {num:'913',cls:'교사',type:'1명'},{num:'914',cls:'교사',type:'1명'},
+        {num:'917',cls:'교사',type:'1명'},{num:'918',cls:'교사',type:'1명'},
+      ]},
+    ]
+  },
+};
+
+let currentFloor = '5';
+
+function showFloor(floor) {
+  currentFloor = floor;
+  document.querySelectorAll('#tab-floorplan .day-btn').forEach((el, i) => {
+    el.classList.toggle('active', ['5','6','7','8','9'][i] === floor);
+  });
+  renderFloor();
+}
+
+function renderFloor() {
+  const data = floorData[currentFloor];
+  if (!data) return;
+  const clsColors = {
+    '1반':'#0077b6','2반':'#00b4d8','3반':'#0096c7',
+    '4반':'#5b21b6','5반':'#7c3aed','6반':'#065f46',
+    '7반':'#059669','8반':'#991b1b','9반':'#b45309',
+    '10반':'#92400e','교사':'#166534','도움반':'#9a3412'
+  };
+  const clsBg = {
+    '1반':'#dbeafe','2반':'#e0f2fe','3반':'#bfdbfe',
+    '4반':'#ede9fe','5반':'#f3e8ff','6반':'#d1fae5',
+    '7반':'#a7f3d0','8반':'#fee2e2','9반':'#fef3c7',
+    '10반':'#fde68a','교사':'#dcfce7','도움반':'#ffedd5'
+  };
+
+  let html = `<div class="card" style="margin-bottom:8px;">
+    <div class="card-title">${currentFloor}층 · ${data.desc}</div>`;
+
+  data.sections.forEach(sec => {
+    html += `<div style="margin-bottom:12px;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:6px;">${sec.label}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">`;
+    sec.rooms.forEach(r => {
+      const isTeacher = r.cls === '교사';
+      const isHelp = r.cls === '도움반';
+      const color = clsColors[r.cls] || '#334155';
+      const bg = clsBg[r.cls] || '#f1f5f9';
+      html += `<div style="background:${bg};border:1.5px solid ${color};border-radius:8px;min-width:52px;text-align:center;padding:5px 6px;">
+        <div style="font-size:11px;font-weight:800;color:${color};">${r.num}</div>
+        <div style="font-size:10px;color:${color};margin-top:1px;">${r.cls}</div>
+        <div style="font-size:9px;color:var(--gray-600);margin-top:1px;">${r.type}</div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById('floorDisplay').innerHTML = html;
+}
+
+// ========== INIT ==========
+renderStudents();
+renderContacts();
+renderBus();
+renderSchedule();
+renderRooms('all');
+</script>
+</body>
+</html>
